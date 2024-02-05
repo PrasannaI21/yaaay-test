@@ -5,7 +5,8 @@
     <classes>
       <class name="ZenkenINDIA.Sample">
         <methods>
-          <include name="invalidLoginIdBlank"/>
+          <include name="invalidLoginBlankFields"/>
+          <include name="setup"/>
         </methods>
       </class> <!-- ZenkenINDIA.Sample -->
     </classes>

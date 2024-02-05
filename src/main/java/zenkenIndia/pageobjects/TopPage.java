@@ -5,7 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class TopPage {
+import zenkenIndia.abstractcomponents.AbstractComponents;
+
+public class TopPage extends AbstractComponents {
 
 	//TopPage before login
 	WebDriver driver;
@@ -16,6 +18,7 @@ public class TopPage {
 	String url;
 
 	public TopPage(WebDriver driver) {
+		super(driver);
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
@@ -32,6 +35,7 @@ public class TopPage {
 	}
 
 	public void acceptCookies() {
+		waitUntilElementAppears(accCookie);
 		accCookie.click();
 	}
 

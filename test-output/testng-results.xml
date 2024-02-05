@@ -1,16 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="2" total="3" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="7" passed="7" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-02-02T15:28:50 IST" name="Default suite" finished-at="2024-02-02T15:29:36 IST" duration-ms="45912">
+  <suite started-at="2024-02-05T18:09:43 IST" name="Default suite" finished-at="2024-02-05T18:10:36 IST" duration-ms="53189">
     <groups>
     </groups>
-    <test started-at="2024-02-02T15:28:50 IST" name="Default test" finished-at="2024-02-02T15:29:36 IST" duration-ms="45912">
+    <test started-at="2024-02-05T18:09:43 IST" name="Default test" finished-at="2024-02-05T18:10:36 IST" duration-ms="53189">
       <class name="ZenkenINDIA.Sample">
-        <test-method signature="invalidLoginIdBlank()[pri:0, instance:ZenkenINDIA.Sample@37cd92d6]" started-at="2024-02-02T15:28:50 IST" name="invalidLoginIdBlank" finished-at="2024-02-02T15:29:36 IST" duration-ms="45882" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:ZenkenINDIA.Sample@2c35e847]" started-at="2024-02-05T18:09:43 IST" name="setup" finished-at="2024-02-05T18:09:49 IST" duration-ms="6110" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="invalidLoginBlankFields()[pri:0, instance:ZenkenINDIA.Sample@2c35e847]" started-at="2024-02-05T18:09:49 IST" name="invalidLoginBlankFields" finished-at="2024-02-05T18:09:51 IST" duration-ms="2372" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- invalidLoginBlankFields -->
+        <test-method is-config="true" signature="terminate()[pri:0, instance:ZenkenINDIA.Sample@2c35e847]" started-at="2024-02-05T18:09:51 IST" name="terminate" finished-at="2024-02-05T18:09:52 IST" duration-ms="92" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- terminate -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:ZenkenINDIA.Sample@2c35e847]" started-at="2024-02-05T18:09:52 IST" name="setup" finished-at="2024-02-05T18:09:55 IST" duration-ms="3585" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="invalidLoginIdBlank()[pri:0, instance:ZenkenINDIA.Sample@2c35e847]" started-at="2024-02-05T18:09:55 IST" name="invalidLoginIdBlank" finished-at="2024-02-05T18:09:57 IST" duration-ms="2158" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- invalidLoginIdBlank -->
+        <test-method is-config="true" signature="terminate()[pri:0, instance:ZenkenINDIA.Sample@2c35e847]" started-at="2024-02-05T18:09:57 IST" name="terminate" finished-at="2024-02-05T18:09:57 IST" duration-ms="95" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- terminate -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:ZenkenINDIA.Sample@2c35e847]" started-at="2024-02-05T18:09:57 IST" name="setup" finished-at="2024-02-05T18:10:01 IST" duration-ms="3754" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="invalidLoginIncorrectId()[pri:0, instance:ZenkenINDIA.Sample@2c35e847]" started-at="2024-02-05T18:10:01 IST" name="invalidLoginIncorrectId" finished-at="2024-02-05T18:10:03 IST" duration-ms="2293" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- invalidLoginIncorrectId -->
+        <test-method is-config="true" signature="terminate()[pri:0, instance:ZenkenINDIA.Sample@2c35e847]" started-at="2024-02-05T18:10:03 IST" name="terminate" finished-at="2024-02-05T18:10:04 IST" duration-ms="88" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- terminate -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:ZenkenINDIA.Sample@2c35e847]" started-at="2024-02-05T18:10:04 IST" name="setup" finished-at="2024-02-05T18:10:07 IST" duration-ms="3486" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="invalidLoginIncorrectPassword()[pri:0, instance:ZenkenINDIA.Sample@2c35e847]" started-at="2024-02-05T18:10:07 IST" name="invalidLoginIncorrectPassword" finished-at="2024-02-05T18:10:10 IST" duration-ms="2634" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- invalidLoginIncorrectPassword -->
+        <test-method is-config="true" signature="terminate()[pri:0, instance:ZenkenINDIA.Sample@2c35e847]" started-at="2024-02-05T18:10:10 IST" name="terminate" finished-at="2024-02-05T18:10:10 IST" duration-ms="102" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- terminate -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:ZenkenINDIA.Sample@2c35e847]" started-at="2024-02-05T18:10:10 IST" name="setup" finished-at="2024-02-05T18:10:13 IST" duration-ms="3681" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="invalidLoginInvalidId()[pri:0, instance:ZenkenINDIA.Sample@2c35e847]" started-at="2024-02-05T18:10:13 IST" name="invalidLoginInvalidId" finished-at="2024-02-05T18:10:16 IST" duration-ms="2150" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- invalidLoginInvalidId -->
+        <test-method is-config="true" signature="terminate()[pri:0, instance:ZenkenINDIA.Sample@2c35e847]" started-at="2024-02-05T18:10:16 IST" name="terminate" finished-at="2024-02-05T18:10:16 IST" duration-ms="91" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- terminate -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:ZenkenINDIA.Sample@2c35e847]" started-at="2024-02-05T18:10:16 IST" name="setup" finished-at="2024-02-05T18:10:19 IST" duration-ms="3457" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="invalidLoginPasswordBlank()[pri:0, instance:ZenkenINDIA.Sample@2c35e847]" started-at="2024-02-05T18:10:19 IST" name="invalidLoginPasswordBlank" finished-at="2024-02-05T18:10:21 IST" duration-ms="2223" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- invalidLoginPasswordBlank -->
+        <test-method is-config="true" signature="terminate()[pri:0, instance:ZenkenINDIA.Sample@2c35e847]" started-at="2024-02-05T18:10:21 IST" name="terminate" finished-at="2024-02-05T18:10:21 IST" duration-ms="116" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- terminate -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:ZenkenINDIA.Sample@2c35e847]" started-at="2024-02-05T18:10:21 IST" name="setup" finished-at="2024-02-05T18:10:25 IST" duration-ms="3468" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="validLogin()[pri:0, instance:ZenkenINDIA.Sample@2c35e847]" started-at="2024-02-05T18:10:25 IST" name="validLogin" finished-at="2024-02-05T18:10:36 IST" duration-ms="11121" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validLogin -->
+        <test-method is-config="true" signature="terminate()[pri:0, instance:ZenkenINDIA.Sample@2c35e847]" started-at="2024-02-05T18:10:36 IST" name="terminate" finished-at="2024-02-05T18:10:36 IST" duration-ms="76" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- terminate -->
       </class> <!-- ZenkenINDIA.Sample -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

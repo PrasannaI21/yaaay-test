@@ -1,15 +1,9 @@
 package zenkenIndia.pageobjects;
 
-import java.time.Clock;
-import java.time.Duration;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import zenkenIndia.abstractcomponents.AbstractComponents;
@@ -51,22 +45,28 @@ public class LoginPage extends AbstractComponents{
 	@FindBy(linkText="Scouts")//TopPage2 class's element
 	WebElement scoutss;
 	
+	public void clearFields()
+	{
+		emailField.clear();
+		passwordField.clear();
+	}
+	
 	public void verifyReqText() throws InterruptedException
 	{
 		logIn.click();
-		Thread.sleep(2000);
+		waitUntilElementAppears(idError);
+		waitUntilElementAppears(passError);
 		String emailReq=idError.getText();
 		Assert.assertEquals(emailReq, "The email field is required.");
 		String passReq=passError.getText();
 		Assert.assertEquals(passReq, "The password field is required.");
 	}
 	
-	public void verifyEmailReqText() throws InterruptedException
+	public void verifyEmailReqText(String password) throws InterruptedException
 	{
-		emailField.clear();
-		passwordField.sendKeys("Test123^");//correct password
+		passwordField.sendKeys(password);//correct password
 		logIn.click(); ;
-		Thread.sleep(2000);
+		waitUntilElementAppears(idError);
 		String emailReq = idError.getText();
 		Assert.assertEquals(emailReq, "The email field is required.");
 		//verify password note is not displayed
@@ -74,12 +74,11 @@ public class LoginPage extends AbstractComponents{
 		
 	}
 	
-	public void verifyPassReqText() throws InterruptedException
+	public void verifyPassReqText(String email) throws InterruptedException
 	{
-		emailField.sendKeys("prasanna.inamdar@zenken.co.jp");
-		passwordField.clear();
+		emailField.sendKeys(email);
 		logIn.click(); 
-		Thread.sleep(2000);
+		waitUntilElementAppears(passError);
 		String passReq = passError.getText();
 		Assert.assertEquals(passReq, "The password field is required.");
 		//verify email note is not displayed
@@ -87,48 +86,41 @@ public class LoginPage extends AbstractComponents{
 		
 	}
 	
-	public void verifyIncorrectEmail() throws InterruptedException
+	public void verifyIncorrectEmail(String email, String password) throws InterruptedException
 	{
-		emailField.clear();
-		emailField.sendKeys("prasanna.inamdar@zenken.co.jp1");//incorrect email
-		passwordField.sendKeys("Test123^");//correct password
+		emailField.sendKeys(email);//incorrect email
+		passwordField.sendKeys(password);//correct password
 		logIn.click(); 
-		Thread.sleep(2000);
+		waitUntilElementAppears(matchRecord);
 		String text = matchRecord.getText();
 		Assert.assertEquals(text, "These credentials do not match our records.");
 	}
 	
-	public void verifyInvalidEmail() throws InterruptedException
+	public void verifyInvalidEmail(String email, String password) throws InterruptedException
 	{
-		emailField.clear();
-		emailField.sendKeys("Hey there");//invalid email
-		passwordField.clear();
-		passwordField.sendKeys("Test123^");//correct password
+		emailField.sendKeys(email);//invalid email
+		passwordField.sendKeys(password);//correct password
 		logIn.click(); 
-		Thread.sleep(2000);
+		waitUntilElementAppears(emailError);
 		String text = emailError.getText();
 		Assert.assertEquals(text, "The email must be a valid email address.");
 		
 	}
 	
-	public void verifyIncorrectPass() throws InterruptedException
+	public void verifyIncorrectPass(String email, String password) throws InterruptedException
 	{
-		emailField.clear();
-		emailField.sendKeys("prasanna.inamdar@zenken.co.jp");//correct email
-		passwordField.clear();
-		passwordField.sendKeys("test123^");//incorrect password
+		emailField.sendKeys(email);//correct email
+		passwordField.sendKeys(password);//incorrect password
 		logIn.click();
-		Thread.sleep(2000);
+		waitUntilElementAppears(matchRecord);
 		String text = matchRecord.getText();
 		Assert.assertEquals(text, "These credentials do not match our records.");
 	}
 	
-	public void verifyLogIn() throws InterruptedException
+	public void verifyLogIn(String email, String password) throws InterruptedException
 	{
-		emailField.clear();
-		emailField.sendKeys("prasanna.inamdar@zenken.co.jp");//correct email
-		passwordField.clear();
-		passwordField.sendKeys("Test123^");//correct password
+		emailField.sendKeys(email);//correct email
+		passwordField.sendKeys(password);//correct password
 		logIn.click();
 //		Thread.sleep(2000);
 //		WebElement iconEle = scoutss;
