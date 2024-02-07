@@ -1,4 +1,4 @@
-package zenkenIndia.pageobjects;
+package zenkenIndia.pageobjects.candidate;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

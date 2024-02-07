@@ -1,4 +1,4 @@
-package ZenkenINDIA;
+package zenkenIndia.candidate;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -6,8 +6,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import zenkenIndia.pageobjects.LoginPage;
-import zenkenIndia.pageobjects.TopPage;
+import zenkenIndia.pageobjects.candidate.LoginPage;
+import zenkenIndia.pageobjects.candidate.TopPage;
 
 public class Login{
 	
@@ -23,6 +23,7 @@ public class Login{
 	@BeforeMethod
 	public void setup()
 	{
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\prasa\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
 		driver = new ChromeDriver();
 		url = "https://" + username + ":" + password + "@" + domain;
 		driver.get(url);
@@ -79,43 +80,11 @@ public class Login{
 		loginPage.verifyLogIn("prasanna.inamdar@zenken.co.jp", "Test123^");
 	}
 	
-//	@Test
-//	public void invalidLoginIdBlankw() throws InterruptedException
-//	{
-//		TopPage topPage = new TopPage(driver);
-//		topPage.goTo();
-//		Thread.sleep(3000);
-//		topPage.acceptCookies();
-//		topPage.logIn();
-//		Thread.sleep(1000);
-//		LoginPage loginPage = new LoginPage(driver);
-//		loginPage.verifyReqText();
-//		loginPage.verifyEmailReqText();
-//		loginPage.verifyPassReqText();
-//		loginPage.verifyIncorrectEmail();
-//		loginPage.verifyInvalidEmail();
-//		loginPage.verifyIncorrectPass();
-//		loginPage.verifyLogIn();
-//	}
-	
-//	@Test
-//	public void invalidLoginBlank() throws InterruptedException
-//	{
-//		TopPage topPage = new TopPage(driver);
-//		topPage.goTo();
-//		Thread.sleep(3000);
-//		topPage.acceptCookies();
-//		topPage.logIn();
-//		Thread.sleep(1000);
-//		LoginPage loginPage = new LoginPage(driver);
-//		loginPage.verifyLogIn();
-		
-//	}
-	
 	@AfterMethod
 	public void terminate()
 	{
-		driver.close();
+		//driver.close();
+		driver.quit();
 	}
 		
 	}
