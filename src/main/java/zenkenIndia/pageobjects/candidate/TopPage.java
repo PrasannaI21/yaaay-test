@@ -12,11 +12,6 @@ public class TopPage extends AbstractComponents {
 	//TopPage before login
 	WebDriver driver;
 
-	String username = "dspfuser";
-	String password = "FobaRm8.";
-	String domain = "stage.dspf-dev.com";
-	String url;
-
 	public TopPage(WebDriver driver) {
 		super(driver);
 		this.driver = driver;
@@ -28,11 +23,6 @@ public class TopPage extends AbstractComponents {
 
 	@FindBy(linkText = "Log In")
 	WebElement logIn;
-
-	public void goTo() {
-		url = "https://" + username + ":" + password + "@" + domain;
-		driver.get(url);
-	}
 
 	public void acceptCookies() {
 		waitUntilElementAppears(accCookie);

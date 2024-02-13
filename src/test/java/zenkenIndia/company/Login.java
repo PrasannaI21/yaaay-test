@@ -1,89 +1,74 @@
 package zenkenIndia.company;
 
-import java.util.concurrent.TimeUnit;
+import java.util.List;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import zenkenIndia.pageobjects.company.LoginPage;
+import zenkenIndia.testcomponents.BaseTest;
 
-public class Login {
-
-	WebDriver driver;
-	LoginPage loginPage = new LoginPage(driver);
+public class Login extends BaseTest{
 	
-	String username = "dspfuser";
-	String password = "FobaRm8.";
-	String domain = "stage.dspf-dev.com/company/login";
-	String url;
+	String expectedText1 = "メールアドレスは必須項目です。";
+	String expectedText2 = "パスワードは必須項目です。";
+	String expectedText3 = "メールアドレスまたはパスワードが正しくありません。";
 	
-	@SuppressWarnings("deprecation")
-	@BeforeMethod
-	public void setup()
-	{
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\prasa\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
-		driver = new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		url = "https://" + username + ":" + password + "@" + domain;
-		driver.get(url);
-	}
-	
-	@Test
+	@Test(groups="companyLogin")
 	public void invalidLoginBlankFields() throws InterruptedException
 	{
-		loginPage = new LoginPage(driver);
-		loginPage.verifyReqText();
+		List<String> texts = cLoginPage.getReqText();
+		Assert.assertEquals(texts.get(0), expectedText1);
+		Assert.assertEquals(texts.get(1), expectedText2);
 	}
 	
-	@Test
-	public void invalidLoginIdBlank()
+	@Test(groups="companyLogin")
+	public void invalidLoginIdBlank() throws InterruptedException
 	{
-		loginPage = new LoginPage(driver);
-		loginPage.verifyEmailReqText("DarkKnight2!");
+		String text = cLoginPage.getEmailReqText("DarkKnight2!");
+		Assert.assertEquals(text, expectedText1);
+		//verify password note is not displayed
+		WebElement ele = cLoginPage.passError;
+		Assert.assertFalse(cLoginPage.isElementPresent(ele));
 	}
 	
-	@Test
+	@Test(groups="companyLogin")
 	public void invalidLoginPasswordBlank()
 	{
-		loginPage = new LoginPage(driver);
-		loginPage.verifyPassReqText("prasanna.inamdar@zenken.co.jp");
+		String text = cLoginPage.getPassReqText("prasanna.inamdar@zenken.co.jp");
+		Assert.assertEquals(text, expectedText2);
+		//verify email note is not displayed
+		WebElement ele = cLoginPage.idError;
+		Assert.assertFalse(cLoginPage.isElementPresent(ele));
 	}
 	
-	@Test
-	public void invalidLoginIncorrectId()
+	@Test(groups="companyLogin")
+	public void invalidLoginIncorrectId() throws InterruptedException
 	{
-		loginPage = new LoginPage(driver);
-		loginPage.verifyIncorrectEmail("prasanna.inamdar@zenken.co.jp1", "DarkKnight2!");
+		String text = cLoginPage.getIncorrectEmailText("prasanna.inamdar@zenken.co.jp1", "DarkKnight2!");
+		Assert.assertEquals(text, expectedText3);
 	}
 	
-	@Test
+	@Test(groups="companyLogin")
 	public void invalidLoginIncorrectPassword()
 	{
-		loginPage = new LoginPage(driver);
-		loginPage.verifyIncorrectPass("prasanna.inamdar@zenken.co.jp", "DarkKnighT2!");
+		String text = cLoginPage.getIncorrectPassText("prasanna.inamdar@zenken.co.jp", "DarkKnighT2!");
+		Assert.assertEquals(text, expectedText3);
 	}
 	
-	@Test
-	public void invalidLoginInvalidId()
+	@Test(groups="companyLogin")
+	public void invalidLoginInvalidId() throws InterruptedException
 	{
-		loginPage = new LoginPage(driver);
-		loginPage.verifyInvalidEmail("Hey there", "DarkKnight2!");
+		String text = cLoginPage.getInvalidEmailText("Hey there", "DarkKnight2!");
+		Assert.assertEquals(text, "メールアドレスには、有効なメールアドレスを入力してください。");
 	}
 	
-	@Test
-	public void validLogin()
+	@Test(groups="companyLogin")
+	public void validLogin() throws InterruptedException
 	{
-		loginPage = new LoginPage(driver);
-		loginPage.verifyLogIn("prasanna.inamdar@zenken.co.jp", "DarkKnight2!");
+		cLoginPage.verifyLogIn("prasanna.inamdar@zenken.co.jp", "DarkKnight2!");
+		WebElement ele = cLoginPage.applications;
+		Assert.assertTrue(cLoginPage.isElementPresent(ele));
 	}
-	
-	@AfterMethod
-	public void terminate()
-	{
-		//driver.close();
-		driver.quit();
-	}
+
 }

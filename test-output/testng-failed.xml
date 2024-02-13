@@ -3,13 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="zenkenIndia.company.Login">
+      <class name="zenkenIndia.candidate.Login">
         <methods>
-          <include name="invalidLoginBlankFields"/>
           <include name="terminate"/>
-          <include name="setup"/>
+          <include name="launchCandidateApp"/>
+          <include name="invalidLoginBlankFields"/>
+          <include name="launchCompanyApp"/>
         </methods>
-      </class> <!-- zenkenIndia.company.Login -->
+      </class> <!-- zenkenIndia.candidate.Login -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

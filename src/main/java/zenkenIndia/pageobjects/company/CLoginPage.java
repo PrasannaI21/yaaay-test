@@ -1,5 +1,8 @@
 package zenkenIndia.pageobjects.company;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,11 +11,11 @@ import org.testng.Assert;
 
 import zenkenIndia.abstractcomponents.AbstractComponents;
 
-public class LoginPage extends AbstractComponents{
+public class CLoginPage extends AbstractComponents{
 	
 	WebDriver driver;
 	
-	public LoginPage(WebDriver driver)
+	public CLoginPage(WebDriver driver)
 	{
 		super(driver);
 		this.driver=driver;
@@ -29,10 +32,10 @@ public class LoginPage extends AbstractComponents{
 	WebElement logIn;
 	
 	@FindBy(xpath="//span[contains(.,'メール')]")
-	WebElement idError;
+	public WebElement idError;
 	
 	@FindBy(xpath="//span[contains(.,'パス')]")
-	WebElement passError;
+	public WebElement passError;
 	
 	@FindBy(css="[role='alert']")
 	WebElement incorrectIdOrPass;
@@ -41,72 +44,75 @@ public class LoginPage extends AbstractComponents{
 	WebElement emailError;
 	
 	@FindBy (css=".u-fz-32.u-fw-500")
-	WebElement applications;
+	public WebElement applications;//Applications class's element
 	
-	public void verifyReqText()
+	public void goTo()
+	{
+		String url = formUrl("/company/login");
+		driver.get(url);
+	}
+	
+	public List<String> getReqText()
 	{
 		logIn.click();
 		waitUntilElementAppears(idError);
 		waitUntilElementAppears(passError);
-		String emailReq = idError.getText();
-		Assert.assertEquals(emailReq, "メールアドレスは必須項目です。");
-		String passReq = passError.getText();
-		Assert.assertEquals(passReq, "パスワードは必須項目です。");
+		List<String> texts = new ArrayList<>();
+		texts.add(idError.getText());
+		texts.add(passError.getText());
+		return texts;
 	}
 	
-	public void verifyEmailReqText(String password) 
+	public String getEmailReqText(String password) 
 	{
 		passwordField.sendKeys(password);//send correct password
 		logIn.click(); ;
 		waitUntilElementAppears(idError);
 		String emailReq = idError.getText();
-		Assert.assertEquals(emailReq, "メールアドレスは必須項目です。");
-		//verify password note is not displayed
-		Assert.assertFalse(isElementPresent(passError));
-		
+		return emailReq;
 	}
 	
-	public void verifyPassReqText(String email) 
+	public String getPassReqText(String email) 
 	{
 		emailField.sendKeys(email);//send correct email
 		logIn.click(); 
 		waitUntilElementAppears(passError);
 		String passReq = passError.getText();
-		Assert.assertEquals(passReq, "パスワードは必須項目です。");
-		//verify email note is not displayed
-		Assert.assertFalse(isElementPresent(idError));
-		
+		return passReq;		
 	}
 	
-	public void verifyIncorrectEmail(String email, String password) 
+	public String getIncorrectEmailText(String email, String password) 
 	{
 		emailField.sendKeys(email);//send incorrect email
 		passwordField.sendKeys(password);//send correct password
 		logIn.click(); 
 		waitUntilElementAppears(incorrectIdOrPass);
 		String text = incorrectIdOrPass.getText();
-		Assert.assertEquals(text, "メールアドレスまたはパスワードが正しくありません。");
+		return text;
+	//	Assert.assertEquals(text, "メールアドレスまたはパスワードが正しくありません。");
 	}
 	
-	public void verifyInvalidEmail(String email, String password)
-	{
-		emailField.sendKeys(email);//send invalid email
-		passwordField.sendKeys(password);//send correct password
-		logIn.click(); 
-		waitUntilElementAppears(emailError);
-		String text = emailError.getText();
-		Assert.assertEquals(text, "メールアドレスには、有効なメールアドレスを入力してください。");
-		
-	}
-	
-	public void verifyIncorrectPass(String email, String password) 
+	public String getIncorrectPassText(String email, String password) 
 	{
 		emailField.sendKeys(email);//send correct email
 		passwordField.sendKeys(password);//send incorrect password
 		logIn.click();
 		waitUntilElementAppears(incorrectIdOrPass);
 		String text = incorrectIdOrPass.getText();
-		Assert.assertEquals(text, "メールアドレスまたはパスワードが正しくありません。");
+		return text;
+//		Assert.assertEquals(text, "メールアドレスまたはパスワードが正しくありません。");
+	}
+	
+	public String getInvalidEmailText(String email, String password)
+	{
+		emailField.sendKeys(email);//send invalid email
+		passwordField.sendKeys(password);//send correct password
+		logIn.click(); 
+		waitUntilElementAppears(emailError);
+		String text = emailError.getText();
+		return text;
+//		Assert.assertEquals(text, "メールアドレスには、有効なメールアドレスを入力してください。");
+		
 	}
 	
 	public void verifyLogIn(String email, String password) 
@@ -119,7 +125,7 @@ public class LoginPage extends AbstractComponents{
 	}
 	
 	//utility method to check the presence of an element
-	boolean isElementPresent(WebElement element)
+	public boolean isElementPresent(WebElement element)
 	{
 		try {
 			return element.isDisplayed();
