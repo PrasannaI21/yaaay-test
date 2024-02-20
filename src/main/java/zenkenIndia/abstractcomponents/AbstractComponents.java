@@ -2,9 +2,11 @@ package zenkenIndia.abstractcomponents;
 
 import java.time.Duration;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AbstractComponents {
@@ -32,4 +34,19 @@ public class AbstractComponents {
 		url = "https://" + username + ":" + password + "@" + domain + subDomain;
 		return url;
 	}
+	
+	public void clickByJavascript(WebElement ele)
+	{
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", ele);
+	}
+	
+	public String selectDropdown(WebElement ele, String text)
+	{
+		Select select = new Select(ele);
+		select.selectByVisibleText(text);
+		String selectedText = select.getFirstSelectedOption().getText();
+		return selectedText;
+	}
+	
 }
