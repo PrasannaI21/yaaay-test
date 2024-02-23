@@ -10,9 +10,18 @@
     <classes>
       <class name="zenkenIndia.candidate.NewRegistration">
         <methods>
-          <include name="invalidRegBlankFields"/>
+          <include name="invalidRegExceedFields"/>
           <include name="terminate"/>
+          <include name="invalidRegInvalidPass1"/>
+          <include name="invalidRegInvalidId"/>
+          <include name="invalidRegInvalidPass4"/>
+          <include name="invalidRegInvalidPass3"/>
+          <include name="verifyDropdowns"/>
+          <include name="validRegistration"/>
+          <include name="verifyRadioButtons"/>
           <include name="launchAppRegister"/>
+          <include name="invalidRegExistingEmail"/>
+          <include name="invalidRegInvalidPass2"/>
         </methods>
       </class> <!-- zenkenIndia.candidate.NewRegistration -->
     </classes>

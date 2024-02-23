@@ -79,7 +79,7 @@ public class BaseTest {
 		driver = initializeDriver();
 		registerPage = new RegisterPage(driver);
 		registerPage.goTo();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		topPage = new TopPage(driver);
 		topPage.acceptCookies();
 		return registerPage;

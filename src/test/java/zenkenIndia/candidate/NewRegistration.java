@@ -52,7 +52,7 @@ public class NewRegistration extends BaseTest{
 		}
 	}
 	
-	@Test
+	@Test(groups="register")
 	public void verifyDropdowns()
 	{
 		List<String> texts = registerPage.selectDropdowns("Iraqi", "Norway");
@@ -60,7 +60,7 @@ public class NewRegistration extends BaseTest{
 		Assert.assertEquals(texts.get(1), "Norway");
 	}
 	
-	@Test
+	@Test(groups="register")
 	public void verifyRadioButtons()
 	{
 		registerPage.selectYes();
@@ -71,7 +71,7 @@ public class NewRegistration extends BaseTest{
 		Assert.assertTrue(registerPage.radio3.isSelected());
 	}
 	
-	@Test
+	@Test(groups="register")
 	public void invalidRegInvalidId()
 	{
 		String text = registerPage.getInvalidEmailText("Hey there", "Yaaay123@");
@@ -84,14 +84,14 @@ public class NewRegistration extends BaseTest{
 		Assert.assertFalse(registerPage.isElementPresent(ele3));
 	}
 	
-	@Test
+	@Test(groups="register")
 	public void invalidRegExistingEmail()
 	{
 		String text = registerPage.getExistingEmailText("prasanna.inamdar@zenken.co.jp", "Test@123");
 		Assert.assertEquals(text, "The email has already been taken.");
 	}
 	
-	@Test
+	@Test(groups="register")
 	public void invalidRegInvalidPass1()
 	{
 		//8 Characters or More
@@ -101,7 +101,7 @@ public class NewRegistration extends BaseTest{
 		Assert.assertFalse(registerPage.isElementPresent(ele));
 	}
 	
-	@Test
+	@Test(groups="register")
 	public void invalidRegInvalidPass2()
 	{
 		//Contains Number
@@ -109,7 +109,7 @@ public class NewRegistration extends BaseTest{
 		Assert.assertEquals(text, "The password field must contain at least one number.");
 	}
 	
-	@Test
+	@Test(groups="register")
 	public void invalidRegInvalidPass3()
 	{
 		//Contains Lowercase/ Uppercase
@@ -117,7 +117,7 @@ public class NewRegistration extends BaseTest{
 		Assert.assertEquals(text, "The password field must contain at least one uppercase and one lowercase letter.");
 	}
 	
-	@Test
+	@Test(groups="register")
 	public void invalidRegInvalidPass4()
 	{
 		//Contains Special Character
@@ -125,7 +125,8 @@ public class NewRegistration extends BaseTest{
 		Assert.assertEquals(text, "The password field must contain at least one symbol.");
 	}
 	
-	@Test
+	//Make sure the user with passed credentials doesn't exist (delete if so)
+	@Test(groups="register")
 	public void validRegistration()
 	{
 		registerPage.verifyRegistration("prasanna.inamdar+user6@zenken.co.jp", "Yaaay123@");
